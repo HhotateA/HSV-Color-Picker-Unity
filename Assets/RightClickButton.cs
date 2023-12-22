@@ -6,16 +6,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class RightClickButton : Button
+public class RightClickButton : MonoBehaviour, IPointerClickHandler
 {
-    
     public Action OnRightClick { get; set; }
 
-    public override void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
             OnRightClick?.Invoke();
-
-        base.OnPointerClick(eventData);
     }
 }
